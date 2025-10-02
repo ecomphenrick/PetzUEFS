@@ -1,19 +1,33 @@
 package Model;
 
+import java.time.LocalDate;
+
 public class Animal {
     private String iD;
     private String nome;
     private String especie;
     private String raca;
-    private String dataNascimento;
+    private LocalDate dataNascimento;
     private String sexo;
     private String situacaoAtual;
 
-    public String getDataNascimento() {
+    public Animal(String iD, String nome, String especie, String raca, LocalDate dataNascimento, String sexo, String situacaoAtual) {
+        this.iD = iD;
+        this.nome = nome;
+        this.especie = especie;
+        this.raca = raca;
+        this.dataNascimento = dataNascimento;
+        this.sexo = sexo;
+        this.situacaoAtual = situacaoAtual;
+    }
+
+
+
+    public LocalDate getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

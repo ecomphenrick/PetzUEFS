@@ -1,4 +1,6 @@
-package View;
+package View.MenusPrincipais;
+
+import View.MenusCadastro.CadastroAnimal;
 
 import java.util.Scanner;
 
@@ -17,7 +19,9 @@ public class MenuCadastro {
                 sc.nextLine();
                 switch (acao){
                     case 0:
-                        //Cadastrar Animal;
+                        CadastroAnimal cadastroAnimal = new CadastroAnimal();
+                        cadastroAnimal.CadastroAnimal();
+                        break;
                     case 1:
                         //Cadastrar Pessoa Tutora;
                     case 2:

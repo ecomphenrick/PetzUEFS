@@ -1,4 +1,4 @@
-package View;
+package View.MenusPrincipais;
 
 import java.util.Scanner;
 

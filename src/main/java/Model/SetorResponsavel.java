@@ -5,6 +5,12 @@ public class SetorResponsavel {
     private String nome;
     private String endereco;
 
+    public SetorResponsavel(String id, String nome, String endereco) {
+        this.iD = id;
+        this.nome = nome;
+        this.endereco = endereco;
+    }
+
     public String getEndereco() {
         return endereco;
     }

@@ -3,6 +3,8 @@ package Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AnimalTest {
@@ -11,25 +13,27 @@ class AnimalTest {
 
     @BeforeEach
     void setUp() {
-        animal = new Animal();
-        animal.setiD("A001");
-        animal.setNome("Rex");
-        animal.setRaca("Labrador");
-        animal.setSexo("M");
-        animal.setEspecie("Cão");
-        animal.setDataNascimento("2020-05-01");
-        animal.setSituacaoAtual("Disponível");
+        animal = new Animal(
+                "A001",                           // iD
+                "Rex",                            // nome
+                "Cão",                             // especie
+                "Labrador",                        // raca
+                LocalDate.of(2020, 10, 14),       // dataNascimento
+                "M",                               // sexo
+                "Disponível"                       // situacaoAtual
+        );
     }
+
 
     @Test
     void getDataNascimento() {
-        assertEquals("2020-05-01", animal.getDataNascimento());
+        assertEquals(LocalDate.of(2020, 10, 14), animal.getDataNascimento());
     }
 
     @Test
     void setDataNascimento() {
-        animal.setDataNascimento("2021-01-01");
-        assertEquals("2021-01-01", animal.getDataNascimento());
+        animal.setDataNascimento(LocalDate.of(2021, 11, 12));
+        assertEquals(LocalDate.of(2021, 11, 12), animal.getDataNascimento());
     }
 
     @Test
@@ -50,8 +54,8 @@ class AnimalTest {
 
     @Test
     void setiD() {
-        animal.setiD("B002");
-        assertEquals("B002", animal.getiD());
+        animal.setiD("A002");
+        assertEquals("A002", animal.getiD());
     }
 
     @Test

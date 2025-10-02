@@ -7,6 +7,14 @@ public class PessoaTutora {
     private String telefone;
     private String email;
 
+    public PessoaTutora(String id, String nome, String endereco, String telefone, String email) {
+        this.iD = id;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
+        this.email = email;
+    }
+
     public String getEmail() {
         return email;
     }

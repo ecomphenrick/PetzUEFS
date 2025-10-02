@@ -1,6 +1,5 @@
-package View;
+package View.MenusPrincipais;
 
-import javax.xml.transform.Source;
 import java.util.Scanner;
 
 public class MenuPrincipal {
