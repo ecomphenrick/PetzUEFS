@@ -1,6 +1,8 @@
 package View.MenusPrincipais;
 
 import View.MenusCadastro.CadastroAnimal;
+import View.MenusCadastro.CadastroSetor;
+import View.MenusCadastro.CadastroTutor;
 
 import java.util.Scanner;
 
@@ -23,9 +25,13 @@ public class MenuCadastro {
                         cadastroAnimal.CadastroAnimal();
                         break;
                     case 1:
-                        //Cadastrar Pessoa Tutora;
+                        CadastroTutor cadastroTutor = new CadastroTutor();
+                        cadastroTutor.CadastroTutor();
+                        break;
                     case 2:
-                        //Cadastrar Responsável;
+                        CadastroSetor cadastroSetor = new CadastroSetor();
+                        cadastroSetor.CadastroSetor();
+                        break;
                     case 3:
                         System.out.println("Saindo...");
                         break;

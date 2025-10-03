@@ -11,17 +11,12 @@ class PessoaTutoraTest {
 
     @BeforeEach
     void setUp() {
-        pessoa = new PessoaTutora();
-        pessoa.setNome("Maria Silva");
-        pessoa.setEmail("maria@email.com");
-        pessoa.setTelefone("123456789");
-        pessoa.setEndereco("Rua A, 123");
-        pessoa.setiD("1");
+        pessoa = new PessoaTutora("P001", "Maria Silva", "Rua A, 123", "75992658825", "maria@gmail.com");
     }
 
     @Test
     void getEmail() {
-        assertEquals("maria@email.com", pessoa.getEmail());
+        assertEquals("maria@gmail.com", pessoa.getEmail());
     }
 
     @Test
@@ -43,7 +38,7 @@ class PessoaTutoraTest {
 
     @Test
     void getiD() {
-        assertEquals("1", pessoa.getiD());
+        assertEquals("P001", pessoa.getiD());
     }
 
     @Test
@@ -54,7 +49,7 @@ class PessoaTutoraTest {
 
     @Test
     void getTelefone() {
-        assertEquals("123456789", pessoa.getTelefone());
+        assertEquals("75992658825", pessoa.getTelefone());
     }
 
     @Test

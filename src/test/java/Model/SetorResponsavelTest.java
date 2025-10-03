@@ -11,7 +11,7 @@ class SetorResponsavelTest {
 
     @BeforeEach
     void setUp() {
-        setor = new SetorResponsavel();
+        setor = new SetorResponsavel("S001", "Adoçao", "Rua principal, 100");
         setor.setiD("S001");
         setor.setNome("Adoção");
         setor.setEndereco("Rua Principal, 100");

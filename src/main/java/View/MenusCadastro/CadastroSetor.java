@@ -16,5 +16,6 @@ public class CadastroSetor {
         String endereco = sc.nextLine();
 
         SetorResponsavel setorResponsavel = new SetorResponsavel(id, nome, endereco);
+        System.out.println("Setor cadastrado com sucesso! ");
     }
 }

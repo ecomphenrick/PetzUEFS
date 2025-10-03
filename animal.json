@@ -1,0 +1,9 @@
+{
+  "iD" : "A001",
+  "nome" : "Jacob",
+  "especie" : "Cachorro",
+  "raca" : "Puterrier",
+  "dataNascimento" : [ 2005, 10, 1 ],
+  "sexo" : "M",
+  "situacaoAtual" : "Disponível para adoção"
+}
