@@ -1,11 +1,7 @@
 package View.MenusCadastro;
 
+import Controller.PersistenciaAnimal;
 import Model.Animal;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-
-import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -62,14 +58,8 @@ public class CadastroAnimal {
 
             System.out.println("Animal cadastrado com sucesso!");
 
-            // === PERSISTÊNCIA COM JACKSON ===
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.registerModule(new JavaTimeModule()); // necessário para LocalDate
-            mapper.writerWithDefaultPrettyPrinter().writeValue(new File("animal.json"), animal);
-            System.out.println("Dados salvos em animal.json");
-
-        } catch (IOException e) {
-            System.out.println("Erro ao salvar JSON: " + e.getMessage());
+            PersistenciaAnimal persistenciaAnimal = new PersistenciaAnimal();
+            persistenciaAnimal.salvarAnimal(animal);
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }

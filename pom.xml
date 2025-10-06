@@ -17,35 +17,14 @@
     </properties>
 
     <dependencies>
-        <!-- Jackson Databind -->
+        <!-- ✅ Gson para manipulação de JSON -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.15.2</version>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
         </dependency>
 
-        <!-- Jackson Core -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.15.2</version>
-        </dependency>
-
-        <!-- Jackson Annotations -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.15.2</version>
-        </dependency>
-
-        <!-- Jackson JSR310 para LocalDate -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.15.2</version>
-        </dependency>
-
-        <!-- JUnit 5 -->
+        <!-- ✅ JUnit 5 para testes -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -56,7 +35,7 @@
 
     <build>
         <plugins>
-            <!-- Compiler Plugin -->
+            <!-- 🔧 Plugin do compilador -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -68,7 +47,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire Plugin para executar testes -->
+            <!-- ⚙️ Plugin para executar testes -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -82,5 +61,6 @@
         </plugins>
     </build>
 </project>
+
 
 
