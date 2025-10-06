@@ -1,5 +1,6 @@
 package View.MenusCadastro;
 
+import Controller.PersistenciaTutor;
 import Model.PessoaTutora;
 
 import java.util.Scanner;
@@ -47,6 +48,8 @@ public class CadastroTutor {
         }
 
         PessoaTutora pessoaTutora = new PessoaTutora(id, nome, endereco, telefone, email);
+        PersistenciaTutor persistenciaTutor = new PersistenciaTutor();
+        persistenciaTutor.salvarTutor(pessoaTutora);
         System.out.println("Tutor cadastrado com sucesso! ");
     }
 }

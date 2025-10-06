@@ -1,5 +1,6 @@
 package View.MenusCadastro;
 
+import Controller.PersistenciaSetor;
 import Model.SetorResponsavel;
 
 import java.util.Scanner;
@@ -17,5 +18,7 @@ public class CadastroSetor {
 
         SetorResponsavel setorResponsavel = new SetorResponsavel(id, nome, endereco);
         System.out.println("Setor cadastrado com sucesso! ");
+        PersistenciaSetor persistenciaSetor = new PersistenciaSetor();
+        persistenciaSetor.salvarSetor(setorResponsavel);
     }
 }
