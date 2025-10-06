@@ -1,5 +1,9 @@
 package View.MenusPrincipais;
 
+import View.MenusBusca.MenuBuscaAnimal;
+import View.MenusBusca.MenuBuscaSetor;
+import View.MenusBusca.MenuBuscaTutor;
+
 import java.util.Scanner;
 
 public class MenuBusca {
@@ -17,11 +21,17 @@ public class MenuBusca {
                 sc.nextLine();
                 switch (acao) {
                     case 0:
-                        //Buscar Animal;
+                        MenuBuscaAnimal menuBuscaAnimal = new MenuBuscaAnimal();
+                        menuBuscaAnimal.MenuBuscaAnimal();
+                        break;
                     case 1:
-                        //Buscar Pessoa Tutora;
+                        MenuBuscaTutor menuBuscaTutor = new MenuBuscaTutor();
+                        menuBuscaTutor.MenuBuscaTutor();
+                        break;
                     case 2:
-                        //Buscar Responsável;
+                        MenuBuscaSetor menuBuscaSetor = new MenuBuscaSetor();
+                        menuBuscaSetor.MenuBuscaSetor();
+                        break;
                     case 3:
                         System.out.println("Saindo...");
                         break;
