@@ -1,7 +1,10 @@
 package Controller;
 
 import Model.Animal;
-import com.google.gson.*;
+import View.MenusCadastro.CadastroAnimal;
+import View.MenusCadastro.CadastroTutor;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.FileReader;
@@ -9,12 +12,12 @@ import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class BuscaAnimal {
-
+public class AtualizarAnimal {
     private static final String CAMINHO_ARQUIVO = "animal.json";
 
-    public List<Animal> buscaAnimais(String nome) {
+    public void AtualizaAnimal (String nomeBuscado){
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
@@ -29,17 +32,21 @@ public class BuscaAnimal {
             }
         } catch (Exception e) {
             System.out.println("❌ Erro ao ler o arquivo: " + e.getMessage());
-            return new ArrayList<>();
+            return;
         }
 
-        List<Animal> encontrados = new ArrayList<>();
-        for (Animal animal : listaAnimais) {
-            if (animal.getNome().equalsIgnoreCase(nome)) {
-                encontrados.add(animal);
+        for (Animal a : listaAnimais){
+            if (a.getNome().equalsIgnoreCase(nomeBuscado)){
+                RemoverAnimal removerAnimal = new RemoverAnimal();
+                removerAnimal.excluirAnimalPorNome(nomeBuscado);
+                System.out.println("Cadastre-o novamente! ");
+                CadastroAnimal cadastroAnimal = new CadastroAnimal();
+                cadastroAnimal.CadastroAnimal();
+                System.out.println("Animal atualizado com sucesso");
+
+            }else {
+                System.out.println("Nenhum animal encontrado com esse nome! ");
             }
         }
-
-        return encontrados;
     }
 }
-

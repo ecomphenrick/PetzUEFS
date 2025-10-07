@@ -2,27 +2,9 @@
   {
     "iD": "A001",
     "nome": "Jhon",
-    "especie": "Gato",
-    "raca": "SRD",
-    "dataNascimento": "2002-10-01",
-    "sexo": "M",
-    "situacaoAtual": "Disponível para adoção"
-  },
-  {
-    "iD": "A002",
-    "nome": "Kaio",
     "especie": "Cachorro",
-    "raca": "Pitbull",
-    "dataNascimento": "2009-01-01",
-    "sexo": "M",
-    "situacaoAtual": "Em tratamento"
-  },
-  {
-    "iD": "A003",
-    "nome": "Dudu",
-    "especie": "Gato",
     "raca": "SRD",
-    "dataNascimento": "2009-10-01",
+    "dataNascimento": "2021-01-01",
     "sexo": "M",
     "situacaoAtual": "Em tratamento"
   }

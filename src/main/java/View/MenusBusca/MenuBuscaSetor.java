@@ -1,8 +1,10 @@
 package View.MenusBusca;
 
 
+import Controller.AtualizarSetor;
 import Controller.BuscaSetor;
 import Controller.BuscaTutor;
+import Controller.RemoverSetor;
 import Model.PessoaTutora;
 import Model.SetorResponsavel;
 
@@ -56,10 +58,12 @@ public class MenuBuscaSetor {
                 break;
 
             case 1:
-                //Implementar
+                AtualizarSetor atualizarSetor = new AtualizarSetor();
+                atualizarSetor.AtualizaSetor(nome);
                 break;
             case 2:
-                //Implementar
+                RemoverSetor removerSetor = new RemoverSetor();
+                removerSetor.excluirSetor(nome);
                 break;
             case 3:
                 System.out.println("Saindo...");

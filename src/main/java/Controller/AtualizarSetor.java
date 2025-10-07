@@ -1,20 +1,22 @@
 package Controller;
 
+import Model.PessoaTutora;
 import Model.SetorResponsavel;
-import com.google.gson.*;
+import View.MenusCadastro.CadastroSetor;
+import View.MenusCadastro.CadastroTutor;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.FileReader;
 import java.lang.reflect.Type;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuscaSetor {
-
+public class AtualizarSetor {
     private static final String CAMINHO_ARQUIVO = "setor.json";
 
-    public List<SetorResponsavel> buscaSetor(String nome) {
+    public void AtualizaSetor (String nomeBuscado){
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
@@ -29,16 +31,21 @@ public class BuscaSetor {
             }
         } catch (Exception e) {
             System.out.println("❌ Erro ao ler o arquivo: " + e.getMessage());
-            return new ArrayList<>();
+            return;
         }
 
-        List<SetorResponsavel> encontrados = new ArrayList<>();
-        for (SetorResponsavel setor : listaSetores) {
-            if (setor.getNome().equalsIgnoreCase(nome)) {
-                encontrados.add(setor);
+        for (SetorResponsavel s : listaSetores){
+            if (s.getNome().equalsIgnoreCase(nomeBuscado)){
+                RemoverSetor removerSetor = new RemoverSetor();
+                removerSetor.excluirSetor(nomeBuscado);
+                System.out.println("Cadastre-o novamente! ");
+                CadastroSetor cadastroSetor = new CadastroSetor();
+                cadastroSetor.CadastroSetor();
+                System.out.println("Setor atualizado com sucesso! ");
+
+            }else {
+                System.out.println("Nenhum animal encontrado com esse nome! ");
             }
         }
-
-        return encontrados; // pode retornar lista vazia se nenhum encontrado
     }
 }

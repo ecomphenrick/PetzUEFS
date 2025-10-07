@@ -54,12 +54,14 @@ public class CadastroAnimal {
             }
 
             LocalDate dataNascimento = LocalDate.of(ano, mes, 1);
-            Animal animal = new Animal(iD, nome, especie, raca, dataNascimento, sexo, situacao);
-
-            System.out.println("Animal cadastrado com sucesso!");
+            String dataStr = dataNascimento.toString();
+            System.out.println(dataStr);
+            Animal animal = new Animal(iD, nome, especie, raca, dataStr, sexo, situacao);
 
             PersistenciaAnimal persistenciaAnimal = new PersistenciaAnimal();
             persistenciaAnimal.salvarAnimal(animal);
+            System.out.println("Animal cadastrado com sucesso!");
+
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }

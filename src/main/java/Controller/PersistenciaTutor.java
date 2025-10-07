@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.PessoaTutora;
-import Model.SetorResponsavel;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
@@ -37,13 +36,11 @@ public class PersistenciaTutor {
             }
         }
 
-        // 🔹 Adicionar novo animal
         listaTutores.add(novoTutor);
 
-        // 🔹 Salvar lista atualizada
         try (FileWriter writer = new FileWriter(arquivo)) {
             gson.toJson(listaTutores, writer);
-            System.out.println("✅ Animal salvo com sucesso!");
+            System.out.println("✅ Tutor salvo com sucesso!");
         } catch (Exception e) {
             System.out.println("❌ Erro ao salvar arquivo: " + e.getMessage());
         }

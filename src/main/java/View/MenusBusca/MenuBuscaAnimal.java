@@ -1,8 +1,9 @@
 package View.MenusBusca;
 
+import Controller.AtualizarAnimal;
 import Controller.BuscaAnimal;
+import Controller.RemoverAnimal;
 import Model.Animal;
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +22,6 @@ public class MenuBuscaAnimal {
             return;
         }
 
-        // Mostrar todos os animais encontrados
         System.out.println("✅ " + encontrados.size() + " animal(is) encontrado(s):");
         for (int i = 0; i < encontrados.size(); i++) {
             Animal animal = encontrados.get(i);
@@ -34,7 +34,7 @@ public class MenuBuscaAnimal {
         System.out.println("2 - Deletar");
         System.out.println("3 - Sair");
         int acao = sc.nextInt();
-        sc.nextLine(); // consumir o enter
+        sc.nextLine();
 
         switch (acao) {
             case 0:
@@ -59,18 +59,26 @@ public class MenuBuscaAnimal {
                 break;
 
             case 1:
-                //Implementar
+                AtualizarAnimal atualizarAnimal = new AtualizarAnimal();
+                atualizarAnimal.AtualizaAnimal(nome);
                 break;
+
             case 2:
-                //Implementar
+                RemoverAnimal removerAnimal = new RemoverAnimal();
+                removerAnimal.excluirAnimalPorNome(nome);
                 break;
+
             case 3:
                 System.out.println("Saindo...");
                 break;
+
             default:
                 System.out.println("⚠️ Opção inválida.");
                 break;
         }
     }
+
+
 }
+
 

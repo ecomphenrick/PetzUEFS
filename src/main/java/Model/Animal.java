@@ -7,11 +7,11 @@ public class Animal {
     private String nome;
     private String especie;
     private String raca;
-    private LocalDate dataNascimento;
+    private String dataNascimento;
     private String sexo;
     private String situacaoAtual;
 
-    public Animal(String iD, String nome, String especie, String raca, LocalDate dataNascimento, String sexo, String situacaoAtual) {
+    public Animal(String iD, String nome, String especie, String raca, String dataNascimento, String sexo, String situacaoAtual) {
         this.iD = iD;
         this.nome = nome;
         this.especie = especie;
@@ -23,11 +23,11 @@ public class Animal {
 
 
 
-    public LocalDate getDataNascimento() {
+    public String getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

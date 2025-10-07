@@ -1,7 +1,9 @@
 package View.MenusBusca;
 
 
+import Controller.AtualizarTutor;
 import Controller.BuscaTutor;
+import Controller.RemoverTutor;
 import Model.PessoaTutora;
 
 import java.util.List;
@@ -57,10 +59,12 @@ public class MenuBuscaTutor {
                 break;
 
             case 1:
-                //Implementar
+                AtualizarTutor atualizarTutor = new AtualizarTutor();
+                atualizarTutor.AtualizaTutor(nome);
                 break;
             case 2:
-                //Implementar
+                RemoverTutor removerTutor = new RemoverTutor();
+                removerTutor.excluirTutor(nome);
                 break;
             case 3:
                 System.out.println("Saindo...");

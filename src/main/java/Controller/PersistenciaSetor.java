@@ -36,13 +36,11 @@ public class PersistenciaSetor {
             }
         }
 
-        // 🔹 Adicionar novo animal
         listaSetores.add(novoSetor);
 
-        // 🔹 Salvar lista atualizada
         try (FileWriter writer = new FileWriter(arquivo)) {
             gson.toJson(listaSetores, writer);
-            System.out.println("✅ Animal salvo com sucesso!");
+            System.out.println("✅ Setor salvo com sucesso!");
         } catch (Exception e) {
             System.out.println("❌ Erro ao salvar arquivo: " + e.getMessage());
         }
