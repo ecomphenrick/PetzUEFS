@@ -81,7 +81,7 @@ public class CadastroTutor {
                 System.out.println("Telefone inválido! Digite apenas 11 números.");
             }
         }
-        String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        String regexEmail = "^(?!.*\\.\\.)[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}(\\.[A-Za-z]{2})?$";
         Pattern pattern = Pattern.compile(regexEmail);
 
         String email;

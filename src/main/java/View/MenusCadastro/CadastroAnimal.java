@@ -40,10 +40,10 @@ public class CadastroAnimal {
 
             do {
                 System.out.println("Digite o ID (Ex: A001): ");
-                String regex = "^A\\d{3}$";
+                String regexiD = "^A\\d{3}$";
                 iD = sc.nextLine();
 
-                if (iD.matches(regex)) {
+                if (iD.matches(regexiD)) {
                     validateID = true;
                     for (Animal a : listaAnimais) {
                         if (a.getiD().equalsIgnoreCase(iD)) {
@@ -61,7 +61,6 @@ public class CadastroAnimal {
             } while (!validateID);
             System.out.println("ID OK!");
 
-
             System.out.println("Digite o nome: ");
             String nome = sc.nextLine();
 
@@ -71,15 +70,15 @@ public class CadastroAnimal {
             System.out.println("Digite a raça: ");
             String raca = sc.nextLine();
 
-            System.out.println("Data de Nascimento: ");
-            System.out.println("Mês: ");
+            System.out.println("Data de Nascimento:\n ");
+            System.out.println("Mês (1-12): ");
             int mes = sc.nextInt();
             sc.nextLine();
             System.out.println("Ano: ");
             int ano = sc.nextInt();
             sc.nextLine();
 
-            System.out.println("Digite o sexo: ");
+            System.out.println("Digite o sexo (F ou M): ");
             String sexo = sc.nextLine();
 
             System.out.println("Situação Atual: ");
@@ -91,18 +90,23 @@ public class CadastroAnimal {
 
             String situacao;
             switch (aux) {
-                case 0 -> situacao = "Em observação";
-                case 1 -> situacao = "Disponível para adoção";
-                case 2 -> situacao = "Em tratamento";
-                default -> {
+                case 0:
+                    situacao = "Em observação";
+                    break;
+                case 1:
+                    situacao = "Disponível para adoção";
+                    break;
+                case 2:
+                    situacao = "Em tratamento";
+                    break;
+                default:
                     System.out.println("Opção inválida, definindo 'Em observação'");
                     situacao = "Em observação";
-                }
+                    break;
             }
 
             LocalDate dataNascimento = LocalDate.of(ano, mes, 1);
             String dataStr = dataNascimento.toString();
-            System.out.println(dataStr);
             Animal animal = new Animal(iD, nome, especie, raca, dataStr, sexo, situacao);
 
             PersistenciaAnimal persistenciaAnimal = new PersistenciaAnimal();

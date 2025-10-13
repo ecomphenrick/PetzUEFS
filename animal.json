@@ -7,5 +7,50 @@
     "dataNascimento": "2018-01-01",
     "sexo": "M",
     "situacaoAtual": "Disponível para adoção"
+  },
+  {
+    "iD": "A002",
+    "nome": "Luna",
+    "especie": "Gato",
+    "raca": "Siamês",
+    "dataNascimento": "2020-06-15",
+    "sexo": "F",
+    "situacaoAtual": "Em observação"
+  },
+  {
+    "iD": "A003",
+    "nome": "Thor",
+    "especie": "Cachorro",
+    "raca": "Golden Retriever",
+    "dataNascimento": "2017-11-20",
+    "sexo": "M",
+    "situacaoAtual": "Em tratamento"
+  },
+  {
+    "iD": "A004",
+    "nome": "Mimi",
+    "especie": "Gato",
+    "raca": "Persa",
+    "dataNascimento": "2019-03-05",
+    "sexo": "F",
+    "situacaoAtual": "Disponível para adoção"
+  },
+  {
+    "iD": "A005",
+    "nome": "Bolt",
+    "especie": "Cachorro",
+    "raca": "Pastor Alemão",
+    "dataNascimento": "2016-08-12",
+    "sexo": "M",
+    "situacaoAtual": "Em observação"
+  },
+  {
+    "iD": "A006",
+    "nome": "Nina",
+    "especie": "Coelho",
+    "raca": "Angorá",
+    "dataNascimento": "2021-02-28",
+    "sexo": "F",
+    "situacaoAtual": "Disponível para adoção"
   }
 ]
