@@ -3,6 +3,7 @@ package View.MenusBusca;
 
 import Controller.AtualizarTutor;
 import Controller.BuscaTutor;
+import Controller.RemoverSetor;
 import Controller.RemoverTutor;
 import Model.PessoaTutora;
 
@@ -63,8 +64,27 @@ public class MenuBuscaTutor {
                 atualizarTutor.AtualizaTutor(nome);
                 break;
             case 2:
-                RemoverTutor removerTutor = new RemoverTutor();
-                removerTutor.excluirTutor(nome);
+                if (encontrados.isEmpty()) {
+                    System.out.println("❌ Nenhum tutor encontrado para remover.");
+                } else {
+                    System.out.println("Tutores encontrados:");
+                    for (int i = 0; i < encontrados.size(); i++) {
+                        System.out.println("[" + i + "] " + encontrados.get(i).getNome() + " (" + encontrados.get(i).getEndereco() + ")");
+                    }
+
+                    System.out.println("Digite o índice do tutor que deseja deletar:");
+                    int index2 = sc.nextInt();
+                    sc.nextLine();
+
+                    if (index2 >= 0 && index2 < encontrados.size()) {
+                        String nomeRemover = encontrados.get(index2).getiD();
+                        RemoverTutor removerTutor = new RemoverTutor();
+                        removerTutor.excluirTutor(nomeRemover);
+                        System.out.println("✅ Tutor removido com sucesso!");
+                    } else {
+                        System.out.println("⚠️ Índice inválido. Nenhum tutor foi removido.");
+                    }
+                }
                 break;
             case 3:
                 System.out.println("Saindo...");

@@ -45,6 +45,5 @@ public class PersistenciaSetor {
             System.out.println("❌ Erro ao salvar arquivo: " + e.getMessage());
         }
 
-        System.out.println("📁 Caminho do arquivo: " + arquivo.getAbsolutePath());
     }
 }

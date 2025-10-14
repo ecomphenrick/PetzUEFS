@@ -25,7 +25,7 @@ public class MenuBuscaAnimal {
         System.out.println("✅ " + encontrados.size() + " animal(is) encontrado(s):");
         for (int i = 0; i < encontrados.size(); i++) {
             Animal animal = encontrados.get(i);
-            System.out.println("[" + i + "] " + animal.getNome() + " (" + animal.getEspecie() + ")");
+            System.out.println("[" + i + "] " + animal.getNome() + " (" + animal.getEspecie() + ")" + " (" + animal.getRaca() + ")");
         }
 
         System.out.println("\nO que você deseja fazer?");
@@ -64,8 +64,27 @@ public class MenuBuscaAnimal {
                 break;
 
             case 2:
-                RemoverAnimal removerAnimal = new RemoverAnimal();
-                removerAnimal.excluirAnimalPorNome(nome);
+                if (encontrados.isEmpty()) {
+                    System.out.println("❌ Nenhum animal encontrado para remover.");
+                } else {
+                    System.out.println("Animais encontrados:");
+                    for (int i = 0; i < encontrados.size(); i++) {
+                        System.out.println("[" + i + "] " + encontrados.get(i).getNome() + " (" + encontrados.get(i).getEspecie() + ")" + " (" + encontrados.get(i).getRaca() + ")");
+                    }
+
+                    System.out.println("Digite o índice do animal que deseja deletar:");
+                    int index2 = sc.nextInt();
+                    sc.nextLine();
+
+                    if (index2 >= 0 && index2 < encontrados.size()) {
+                        String nomeRemover = encontrados.get(index2).getiD();
+                        RemoverAnimal removerAnimal = new RemoverAnimal();
+                        removerAnimal.excluirAnimalPorNome(nomeRemover);
+                        System.out.println("✅ Animal removido com sucesso!");
+                    } else {
+                        System.out.println("⚠️ Índice inválido. Nenhum animal foi removido.");
+                    }
+                }
                 break;
 
             case 3:

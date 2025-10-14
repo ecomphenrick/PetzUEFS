@@ -30,17 +30,17 @@ public class RemoverTutor {
             return;
         }
 
-        boolean removido = listaTutores.removeIf(a -> a.getNome().equalsIgnoreCase(nomeExcluir));
+        boolean removido = listaTutores.removeIf(a -> a.getiD().equalsIgnoreCase(nomeExcluir));
 
         if (removido) {
             try (FileWriter writer = new FileWriter(CAMINHO_ARQUIVO)) {
                 gson.toJson(listaTutores, writer);
-                System.out.println("🗑️ Tutor com o nome '" + nomeExcluir + "' removido(s) com sucesso!");
+                System.out.println("🗑️ Tutor removido com sucesso!");
             } catch (Exception e) {
                 System.out.println("❌ Erro ao salvar o arquivo: " + e.getMessage());
             }
         } else {
-            System.out.println("⚠️ Nenhum tutor com o nome '" + nomeExcluir + "' foi encontrado para remoção.");
+            System.out.println("⚠️ Nenhum tutor foi encontrado para remoção.");
         }
     }
 }

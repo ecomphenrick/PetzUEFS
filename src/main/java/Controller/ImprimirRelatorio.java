@@ -73,7 +73,7 @@ public class ImprimirRelatorio {
             return;
         }
         if (listaSetores.isEmpty() || listaSetores == null){
-            System.out.println("Não há registro de tutores no sistema. ");
+            System.out.println("Não há registro de setores no sistema. ");
         }else{
             for(SetorResponsavel s : listaSetores){
                 System.out.println("Nome: " + s.getNome());

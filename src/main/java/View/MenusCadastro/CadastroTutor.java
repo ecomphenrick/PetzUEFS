@@ -41,7 +41,7 @@ public class CadastroTutor {
 
 
         do {
-            System.out.println("Digite o ID (Ex: A001): ");
+            System.out.println("Digite o ID (Ex: T001): ");
             String regex = "^T\\d{3}$";
             iD = sc.nextLine();
 

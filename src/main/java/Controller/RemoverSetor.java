@@ -14,7 +14,7 @@ import java.util.List;
 
 public class RemoverSetor {
     private static final String CAMINHO_ARQUIVO = "setor.json";
-    public void excluirSetor(String nomeExcluir) {
+    public void excluirSetor(String iDExcluir) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
@@ -31,17 +31,17 @@ public class RemoverSetor {
             return;
         }
 
-        boolean removido = listaSetores.removeIf(a -> a.getNome().equalsIgnoreCase(nomeExcluir));
+        boolean removido = listaSetores.removeIf(a -> a.getiD().equalsIgnoreCase(iDExcluir));
 
         if (removido) {
             try (FileWriter writer = new FileWriter(CAMINHO_ARQUIVO)) {
                 gson.toJson(listaSetores, writer);
-                System.out.println("🗑️ Setores com o nome '" + nomeExcluir + "' removido(s) com sucesso!");
+                System.out.println("🗑️ Setor removido com sucesso!");
             } catch (Exception e) {
                 System.out.println("❌ Erro ao salvar o arquivo: " + e.getMessage());
             }
         } else {
-            System.out.println("⚠️ Nenhum setor com o nome '" + nomeExcluir + "' foi encontrado para remoção.");
+            System.out.println("⚠️ Nenhum setor foi encontrado para remoção.");
         }
     }
 }

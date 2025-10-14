@@ -1,10 +1,7 @@
 package View.MenusBusca;
 
 
-import Controller.AtualizarSetor;
-import Controller.BuscaSetor;
-import Controller.BuscaTutor;
-import Controller.RemoverSetor;
+import Controller.*;
 import Model.PessoaTutora;
 import Model.SetorResponsavel;
 
@@ -62,8 +59,27 @@ public class MenuBuscaSetor {
                 atualizarSetor.AtualizaSetor(nome);
                 break;
             case 2:
-                RemoverSetor removerSetor = new RemoverSetor();
-                removerSetor.excluirSetor(nome);
+                if (encontrados.isEmpty()) {
+                    System.out.println("❌ Nenhum setor encontrado para remover.");
+                } else {
+                    System.out.println("Setores encontrados:");
+                    for (int i = 0; i < encontrados.size(); i++) {
+                        System.out.println("[" + i + "] " + encontrados.get(i).getNome() + " (" + encontrados.get(i).getEndereco() + ")");
+                    }
+
+                    System.out.println("Digite o índice do setor que deseja deletar:");
+                    int index2 = sc.nextInt();
+                    sc.nextLine();
+
+                    if (index2 >= 0 && index2 < encontrados.size()) {
+                        String nomeRemover = encontrados.get(index2).getiD();
+                        RemoverSetor removerSetor = new RemoverSetor();
+                        removerSetor.excluirSetor(nomeRemover);
+                        System.out.println("✅ Animal removido com sucesso!");
+                    } else {
+                        System.out.println("⚠️ Índice inválido. Nenhum animal foi removido.");
+                    }
+                }
                 break;
             case 3:
                 System.out.println("Saindo...");
