@@ -60,7 +60,7 @@ public class MenuBuscaAnimal {
 
             case 1:
                 AtualizarAnimal atualizarAnimal = new AtualizarAnimal();
-                atualizarAnimal.AtualizaAnimal(nome);
+                atualizarAnimal.atualizarAnimal(nome);
                 break;
 
             case 2:

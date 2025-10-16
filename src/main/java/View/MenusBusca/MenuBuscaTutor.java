@@ -61,7 +61,7 @@ public class MenuBuscaTutor {
 
             case 1:
                 AtualizarTutor atualizarTutor = new AtualizarTutor();
-                atualizarTutor.AtualizaTutor(nome);
+                atualizarTutor.atualizarTutor(nome);
                 break;
             case 2:
                 if (encontrados.isEmpty()) {

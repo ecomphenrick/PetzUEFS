@@ -1,0 +1,34 @@
+[
+  {
+    "iD": "S133",
+    "nome": "reitoria",
+    "endereco": "uefs",
+    "pessoaTutoras": [
+      {
+        "iD": "T644",
+        "nome": "henrick",
+        "endereco": "barrocas",
+        "telefone": "75992658825",
+        "email": "henrick@uefs.com",
+        "animals": [
+          "pitoco"
+        ]
+      }
+    ],
+    "animais": [
+      {
+        "iD": "A092",
+        "nome": "pitoco",
+        "especie": "gato",
+        "raca": "srd",
+        "dataNascimento": "2020-01-01",
+        "sexo": "m",
+        "situacaoAtual": "Em tratamento",
+        "nomeSetor": "reitoria",
+        "tutores": [
+          "rick"
+        ]
+      }
+    ]
+  }
+]

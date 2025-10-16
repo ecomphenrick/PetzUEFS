@@ -56,7 +56,7 @@ public class MenuBuscaSetor {
 
             case 1:
                 AtualizarSetor atualizarSetor = new AtualizarSetor();
-                atualizarSetor.AtualizaSetor(nome);
+                atualizarSetor.atualizarSetor(nome);
                 break;
             case 2:
                 if (encontrados.isEmpty()) {
