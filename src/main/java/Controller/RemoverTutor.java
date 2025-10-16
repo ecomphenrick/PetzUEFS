@@ -13,13 +13,11 @@ import java.util.List;
 
 public class RemoverTutor {
     private static final String CAMINHO_ARQUIVO = "tutor.json";
-    public void excluirTutor(String nomeExcluir) {
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
+
+    public void excluirTutor(String iDExcluir) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         List<PessoaTutora> listaTutores = new ArrayList<>();
-
 
         try (FileReader reader = new FileReader(CAMINHO_ARQUIVO)) {
             Type tipoLista = new TypeToken<List<PessoaTutora>>() {}.getType();
@@ -30,17 +28,32 @@ public class RemoverTutor {
             return;
         }
 
-        boolean removido = listaTutores.removeIf(a -> a.getiD().equalsIgnoreCase(nomeExcluir));
-
-        if (removido) {
-            try (FileWriter writer = new FileWriter(CAMINHO_ARQUIVO)) {
-                gson.toJson(listaTutores, writer);
-                System.out.println("🗑️ Tutor removido com sucesso!");
-            } catch (Exception e) {
-                System.out.println("❌ Erro ao salvar o arquivo: " + e.getMessage());
+        PessoaTutora tutorRemover = null;
+        for (PessoaTutora t : listaTutores) {
+            if (t.getiD().equalsIgnoreCase(iDExcluir)) {
+                tutorRemover = t;
+                break;
             }
-        } else {
-            System.out.println("⚠️ Nenhum tutor foi encontrado para remoção.");
+        }
+
+        if (tutorRemover == null) {
+            System.out.println("⚠️ Nenhum tutor com esse ID foi encontrado para remoção.");
+            return;
+        }
+
+        if (listaTutores.size() <= 1) {
+            System.out.println("⚠️ Não é possível remover este tutor, pois não haverá tutores restantes.");
+            System.out.println("➡️ Cadastre pelo menos mais um tutor antes de tentar remover este.");
+            return;
+        }
+
+        listaTutores.remove(tutorRemover);
+
+        try (FileWriter writer = new FileWriter(CAMINHO_ARQUIVO)) {
+            gson.toJson(listaTutores, writer);
+            System.out.println("🗑️ Tutor removido com sucesso!");
+        } catch (Exception e) {
+            System.out.println("❌ Erro ao salvar o arquivo: " + e.getMessage());
         }
     }
 }
