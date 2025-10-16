@@ -1,18 +1,22 @@
 package Model;
 
+import java.util.List;
+
 public class PessoaTutora {
     private String iD;
     private String nome;
     private String endereco;
     private String telefone;
     private String email;
+    private List<Animal> animals;
 
-    public PessoaTutora(String id, String nome, String endereco, String telefone, String email) {
+    public PessoaTutora(String id, String nome, String endereco, String telefone, String email, List<Animal> animals) {
         this.iD = id;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
         this.email = email;
+        this.animals = animals;
     }
 
     public String getEmail() {
@@ -53,5 +57,13 @@ public class PessoaTutora {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public List<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(List<Animal> animals) {
+        this.animals = animals;
     }
 }

@@ -1,6 +1,7 @@
 package Model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Animal {
     private String iD;
@@ -10,8 +11,10 @@ public class Animal {
     private String dataNascimento;
     private String sexo;
     private String situacaoAtual;
+    private String nomeSetor;
+    private List<String> tutores;
 
-    public Animal(String iD, String nome, String especie, String raca, String dataNascimento, String sexo, String situacaoAtual) {
+    public Animal(String iD, String nome, String especie, String raca, String dataNascimento, String sexo, String situacaoAtual, String nomeSetor, List<String> tutores){
         this.iD = iD;
         this.nome = nome;
         this.especie = especie;
@@ -19,6 +22,8 @@ public class Animal {
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
         this.situacaoAtual = situacaoAtual;
+        this.nomeSetor = nomeSetor;
+        this.tutores = tutores;
     }
 
 
@@ -77,5 +82,21 @@ public class Animal {
 
     public void setSituacaoAtual(String situacaoAtual) {
         this.situacaoAtual = situacaoAtual;
+    }
+
+    public String getNomeSetor() {
+        return nomeSetor;
+    }
+
+    public void setNomeSetor(String nomeSetor) {
+        this.nomeSetor = nomeSetor;
+    }
+
+    public List<String> getTutores() {
+        return tutores;
+    }
+
+    public void setTutores(List<String> tutores) {
+        this.tutores = tutores;
     }
 }

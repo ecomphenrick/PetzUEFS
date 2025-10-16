@@ -31,6 +31,7 @@ public class RemoverSetor {
             return;
         }
 
+
         boolean removido = listaSetores.removeIf(a -> a.getiD().equalsIgnoreCase(iDExcluir));
 
         if (removido) {

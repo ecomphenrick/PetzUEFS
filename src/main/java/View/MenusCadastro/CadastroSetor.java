@@ -2,6 +2,7 @@ package View.MenusCadastro;
 
 import Controller.PersistenciaSetor;
 import Model.Animal;
+import Model.PessoaTutora;
 import Model.SetorResponsavel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -65,7 +66,10 @@ public class CadastroSetor {
         System.out.println("Digite o endereço: ");
         String endereco = sc.nextLine();
 
-        SetorResponsavel setorResponsavel = new SetorResponsavel(iD, nome, endereco);
+        List<PessoaTutora> tutores = new ArrayList<>();
+        List<Animal> animals = new ArrayList<>();
+
+        SetorResponsavel setorResponsavel = new SetorResponsavel(iD, nome, endereco, tutores, animals);
         System.out.println("Setor cadastrado com sucesso! ");
         PersistenciaSetor persistenciaSetor = new PersistenciaSetor();
         persistenciaSetor.salvarSetor(setorResponsavel);
