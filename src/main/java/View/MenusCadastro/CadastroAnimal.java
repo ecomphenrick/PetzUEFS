@@ -16,11 +16,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe responsável pelo cadastro de animais no sistema PetzUEFS.
+ * Faz a persistência em arquivos JSON de animais, setores e tutores.
+ */
 public class CadastroAnimal {
     private static final String CAMINHO_ARQUIVO = "animal.json";
     private static final String CAMINHO_ARQUIVO2 = "setor.json";
     private static final String CAMINHO_ARQUIVO3 = "tutor.json";
 
+    /**
+     * Realiza o cadastro de um novo animal, associando-o a um setor e tutores.
+     * Valida ID único, datas, sexo e situação. Atualiza automaticamente
+     * os arquivos setor.json e tutor.json.
+     */
     public void CadastroAnimal() {
         try {
             Scanner sc = new Scanner(System.in);
@@ -193,9 +202,3 @@ public class CadastroAnimal {
         }
     }
 }
-
-
-
-
-
-

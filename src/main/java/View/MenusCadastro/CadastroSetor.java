@@ -14,29 +14,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe responsável pelo cadastro de setores no sistema PetzUEFS.
+ * Permite criar um setor com ID, nome, endereço e listas vazias de tutores e animais.
+ */
 public class CadastroSetor {
     private static final String CAMINHO_ARQUIVO = "setor.json";
-    public void CadastroSetor (){
+
+    /**
+     * Realiza o cadastro de um setor.
+     * Valida o ID do setor e salva automaticamente no arquivo setor.json.
+     */
+    public void CadastroSetor() {
         Scanner sc = new Scanner(System.in);
         System.out.println("CADASTRANDO SETOR");
         boolean validateID = false;
         String iD;
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<SetorResponsavel> listaSetores = new ArrayList<>();
 
         try (FileReader reader = new FileReader(CAMINHO_ARQUIVO)) {
             Type tipoLista = new TypeToken<List<SetorResponsavel>>() {}.getType();
             listaSetores = gson.fromJson(reader, tipoLista);
-            if (listaSetores == null) {
-                listaSetores = new ArrayList<>();
-            }
+            if (listaSetores == null) listaSetores = new ArrayList<>();
         } catch (Exception e) {
             System.out.println("❌ Erro ao ler o arquivo: " + e.getMessage());
             return;
         }
-
 
         do {
             System.out.println("Digite o ID (Ex: S001): ");
@@ -52,7 +56,6 @@ public class CadastroSetor {
                         break;
                     }
                 }
-
             } else {
                 System.out.println("Formato inválido, o formato correto é 'S' seguido de 3 números! Ex: S001 ou S002...");
                 validateID = false;
@@ -70,8 +73,9 @@ public class CadastroSetor {
         List<Animal> animals = new ArrayList<>();
 
         SetorResponsavel setorResponsavel = new SetorResponsavel(iD, nome, endereco, tutores, animals);
-        System.out.println("Setor cadastrado com sucesso! ");
+        System.out.println("Setor cadastrado com sucesso!");
         PersistenciaSetor persistenciaSetor = new PersistenciaSetor();
         persistenciaSetor.salvarSetor(setorResponsavel);
     }
 }
+

@@ -10,15 +10,24 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável por realizar buscas de pessoas tutoras no sistema.
+ * <p>
+ * Permite buscar tutores pelo nome no arquivo "tutor.json" e retorna
+ * uma lista de objetos {@link PessoaTutora} que correspondam ao critério de busca.
+ * </p>
+ */
 public class BuscaTutor {
 
+    /** Caminho do arquivo JSON que armazena os tutores */
     private static final String CAMINHO_ARQUIVO = "tutor.json";
 
     /**
-     * Busca todos os animais com o nome informado no arquivo JSON.
+     * Busca todos os tutores que tenham o nome informado.
      *
-     * @param nome Nome do animal a buscar.
-     * @return Lista de animais encontrados. Pode estar vazia se nenhum encontrado.
+     * @param nome Nome do tutor a ser buscado (não diferencia maiúsculas de minúsculas)
+     * @return Lista de tutores encontrados com o nome informado.
+     *         Retorna uma lista vazia caso nenhum tutor seja encontrado ou ocorra um erro na leitura do arquivo.
      */
     public List<PessoaTutora> buscaTutor(String nome) {
         Gson gson = new GsonBuilder()
@@ -51,7 +60,7 @@ public class BuscaTutor {
             return new ArrayList<>();
         }
 
-        // Filtrar todos os animais que correspondem ao nome (ignora maiúsculas/minúsculas)
+        // Filtrar todos os tutores que correspondem ao nome (ignora maiúsculas/minúsculas)
         List<PessoaTutora> encontrados = new ArrayList<>();
         for (PessoaTutora tutor : listaTutores) {
             if (tutor.getNome().equalsIgnoreCase(nome)) {
@@ -62,3 +71,4 @@ public class BuscaTutor {
         return encontrados; // pode retornar lista vazia se nenhum encontrado
     }
 }
+

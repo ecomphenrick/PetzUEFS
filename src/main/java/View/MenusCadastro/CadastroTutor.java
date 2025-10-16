@@ -17,10 +17,18 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Classe responsável pelo cadastro de pessoas tutoras no sistema PetzUEFS.
+ * Permite criar uma pessoa tutora associada a um setor, com ID, nome, endereço, telefone, e-mail e lista de animais.
+ */
 public class CadastroTutor {
     private static final String CAMINHO_ARQUIVO = "tutor.json";
     private static final String CAMINHO_ARQUIVO2 = "setor.json";
 
+    /**
+     * Realiza o cadastro de uma pessoa tutora.
+     * Valida ID, telefone e e-mail, atualiza o setor correspondente e salva no tutor.json.
+     */
     public void CadastroTutor() {
         Scanner sc = new Scanner(System.in);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -45,7 +53,7 @@ public class CadastroTutor {
             return;
         }
 
-        if (listaSetores == null || listaSetores.isEmpty()) {
+        if (listaSetores.isEmpty()) {
             System.out.println("⚠️ Nenhum setor cadastrado! Cadastre um setor primeiro.");
             return;
         }
@@ -58,8 +66,7 @@ public class CadastroTutor {
         do {
             System.out.println("Cadastrar em qual setor?");
             for (int i = 0; i < listaSetores.size(); i++) {
-                SetorResponsavel s = listaSetores.get(i);
-                System.out.println("[" + i + "] " + s.getNome());
+                System.out.println("[" + i + "] " + listaSetores.get(i).getNome());
             }
             System.out.print("Digite o índice do setor: ");
             indiceEscolhido = sc.nextInt();
@@ -117,7 +124,6 @@ public class CadastroTutor {
         }
 
         List<String> animals = new ArrayList<>();
-
         PessoaTutora pessoaTutora = new PessoaTutora(iD, nome, endereco, telefone, email, animals);
         listaSetores.get(indiceEscolhido).getPessoaTutoras().add(pessoaTutora);
 
@@ -133,4 +139,5 @@ public class CadastroTutor {
         System.out.println("Tutor cadastrado com sucesso!");
     }
 }
+
 

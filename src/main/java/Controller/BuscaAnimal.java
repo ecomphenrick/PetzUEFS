@@ -6,14 +6,28 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.FileReader;
 import java.lang.reflect.Type;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável por realizar buscas de animais no sistema.
+ * <p>
+ * Permite buscar animais pelo nome no arquivo "animal.json" e retorna
+ * uma lista de objetos {@link Animal} que correspondam ao critério de busca.
+ * </p>
+ */
 public class BuscaAnimal {
 
+    /** Caminho do arquivo JSON que armazena os animais */
     private static final String CAMINHO_ARQUIVO = "animal.json";
 
+    /**
+     * Busca todos os animais que tenham o nome informado.
+     *
+     * @param nome Nome do animal a ser buscado (não diferencia maiúsculas de minúsculas)
+     * @return Lista de animais encontrados com o nome informado.
+     *         Retorna uma lista vazia caso nenhum animal seja encontrado ou ocorra um erro na leitura do arquivo.
+     */
     public List<Animal> buscaAnimais(String nome) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -42,4 +56,3 @@ public class BuscaAnimal {
         return encontrados;
     }
 }
-

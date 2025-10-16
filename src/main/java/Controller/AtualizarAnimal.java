@@ -35,7 +35,10 @@ public class AtualizarAnimal {
             }
         }
 
-        if (animalEncontrado == null) return;
+        if (animalEncontrado == null) {
+            System.out.println("⚠️ Animal não encontrado.");
+            return;
+        }
 
         String nomeAntigo = animalEncontrado.getNome();
 
@@ -98,6 +101,7 @@ public class AtualizarAnimal {
                 animalEncontrado.setSituacaoAtual(situacao);
                 break;
             default:
+                System.out.println("Opção inválida.");
                 return;
         }
 
@@ -105,7 +109,7 @@ public class AtualizarAnimal {
         atualizarSetores(animalEncontrado, gson);
         atualizarTutores(animalEncontrado, nomeAntigo, gson);
 
-        System.out.println("Animal atualizado com sucesso!");
+        System.out.println("✅ Animal atualizado com sucesso!");
     }
 
     private List<Animal> lerListaAnimal(Gson gson) {

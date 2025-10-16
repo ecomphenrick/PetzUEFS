@@ -6,14 +6,28 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.FileReader;
 import java.lang.reflect.Type;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável por realizar buscas de setores no sistema.
+ * <p>
+ * Permite buscar setores pelo nome no arquivo "setor.json" e retorna
+ * uma lista de objetos {@link SetorResponsavel} que correspondam ao critério de busca.
+ * </p>
+ */
 public class BuscaSetor {
 
+    /** Caminho do arquivo JSON que armazena os setores */
     private static final String CAMINHO_ARQUIVO = "setor.json";
 
+    /**
+     * Busca todos os setores que tenham o nome informado.
+     *
+     * @param nome Nome do setor a ser buscado (não diferencia maiúsculas de minúsculas)
+     * @return Lista de setores encontrados com o nome informado.
+     *         Retorna uma lista vazia caso nenhum setor seja encontrado ou ocorra um erro na leitura do arquivo.
+     */
     public List<SetorResponsavel> buscaSetor(String nome) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -39,6 +53,7 @@ public class BuscaSetor {
             }
         }
 
-        return encontrados; // pode retornar lista vazia se nenhum encontrado
+        return encontrados;
     }
 }
+

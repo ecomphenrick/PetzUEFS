@@ -11,10 +11,25 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável pela persistência de dados dos setores.
+ * <p>
+ * Permite salvar novos setores em um arquivo JSON, mantendo os registros existentes.
+ * </p>
+ */
 public class PersistenciaSetor {
 
     private static final String CAMINHO_ARQUIVO = "setor.json";
 
+    /**
+     * Salva um novo setor no arquivo JSON.
+     * <p>
+     * Se o arquivo já existir, os setores existentes serão mantidos e o novo será adicionado ao final.
+     * Caso o arquivo não exista, será criado um novo.
+     * </p>
+     *
+     * @param novoSetor Objeto SetorResponsavel a ser salvo.
+     */
     public void salvarSetor(SetorResponsavel novoSetor) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -23,7 +38,7 @@ public class PersistenciaSetor {
         File arquivo = new File(CAMINHO_ARQUIVO);
         List<SetorResponsavel> listaSetores = new ArrayList<>();
 
-
+        // Ler arquivo existente, se houver
         if (arquivo.exists()) {
             try (FileReader reader = new FileReader(arquivo)) {
                 Type tipoLista = new TypeToken<List<SetorResponsavel>>() {}.getType();
@@ -36,14 +51,16 @@ public class PersistenciaSetor {
             }
         }
 
+        // Adicionar o novo setor à lista
         listaSetores.add(novoSetor);
 
+        // Salvar a lista atualizada no arquivo
         try (FileWriter writer = new FileWriter(arquivo)) {
             gson.toJson(listaSetores, writer);
             System.out.println("✅ Setor salvo com sucesso!");
         } catch (Exception e) {
             System.out.println("❌ Erro ao salvar arquivo: " + e.getMessage());
         }
-
     }
 }
+

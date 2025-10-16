@@ -2,21 +2,29 @@ package View.MenusPrincipais;
 
 import java.util.Scanner;
 
+/**
+ * Classe que representa o menu principal do sistema PetzUEFS.
+ */
 public class MenuPrincipal {
-    public void MenuPrincipal (){
+
+    /**
+     * Exibe o menu principal e permite ao usuário navegar entre CADASTRO, BUSCA, RELATÓRIO ou SAIR.
+     */
+    public void MenuPrincipal() {
         Scanner sc = new Scanner(System.in);
         int acao;
         try {
-            System.out.println("Bem vindos a PetzUEFS!\n");
+            System.out.println("🎉 Bem-vindo à PetzUEFS!\n");
             do {
-                System.out.println("O que você deseja fazer? ");
-                System.out.println("0 - CADASTRO");
-                System.out.println("1 - BUSCA");
-                System.out.println("2 - RELATÓRIO");
-                System.out.println("3 - SAIR");
+                System.out.println("📌 O que você deseja fazer?");
+                System.out.println("[0] CADASTRO");
+                System.out.println("[1] BUSCA");
+                System.out.println("[2] RELATÓRIO");
+                System.out.println("[3] SAIR");
+                System.out.print("Escolha uma opção: ");
                 acao = sc.nextInt();
                 sc.nextLine();
-                switch (acao){
+                switch (acao) {
                     case 0:
                         MenuCadastro menuCadastro = new MenuCadastro();
                         menuCadastro.menuCadastro();
@@ -30,15 +38,16 @@ public class MenuPrincipal {
                         menuRelatorio.ImprimirRelatorio();
                         break;
                     case 3:
-                        System.out.println("Saindo...");
+                        System.out.println("👋 Saindo do sistema...");
                         break;
                     default:
-                        System.out.println("Opção inválida! ");
+                        System.out.println("⚠️ Opção inválida! Tente novamente.\n");
                         break;
                 }
-            }while (acao !=3);
+                System.out.println();
+            } while (acao != 3);
         } catch (Exception e) {
-            System.out.println("Erro: " + e);
+            System.out.println("❌ Erro: " + e.getMessage());
         }
     }
 }

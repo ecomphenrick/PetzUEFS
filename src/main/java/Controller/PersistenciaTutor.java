@@ -11,10 +11,25 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável pela persistência de dados dos tutores.
+ * <p>
+ * Permite salvar novos tutores em um arquivo JSON, mantendo os registros existentes.
+ * </p>
+ */
 public class PersistenciaTutor {
 
     private static final String CAMINHO_ARQUIVO = "tutor.json";
 
+    /**
+     * Salva um novo tutor no arquivo JSON.
+     * <p>
+     * Se o arquivo já existir, os tutores existentes serão mantidos e o novo será adicionado ao final.
+     * Caso o arquivo não exista, será criado um novo.
+     * </p>
+     *
+     * @param novoTutor Objeto PessoaTutora a ser salvo.
+     */
     public void salvarTutor(PessoaTutora novoTutor) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -23,7 +38,7 @@ public class PersistenciaTutor {
         File arquivo = new File(CAMINHO_ARQUIVO);
         List<PessoaTutora> listaTutores = new ArrayList<>();
 
-
+        // Ler arquivo existente, se houver
         if (arquivo.exists()) {
             try (FileReader reader = new FileReader(arquivo)) {
                 Type tipoLista = new TypeToken<List<PessoaTutora>>() {}.getType();
@@ -36,15 +51,17 @@ public class PersistenciaTutor {
             }
         }
 
+        // Adicionar o novo tutor à lista
         listaTutores.add(novoTutor);
 
+        // Salvar a lista atualizada no arquivo
         try (FileWriter writer = new FileWriter(arquivo)) {
             gson.toJson(listaTutores, writer);
             System.out.println("✅ Tutor salvo com sucesso!");
         } catch (Exception e) {
             System.out.println("❌ Erro ao salvar arquivo: " + e.getMessage());
         }
-
     }
 }
+
 

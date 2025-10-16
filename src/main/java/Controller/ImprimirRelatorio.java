@@ -14,16 +14,26 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável por gerar relatórios de animais, tutores e setores.
+ * <p>
+ * Cada método exibe informações detalhadas no console, de forma clara e organizada.
+ * </p>
+ */
 public class ImprimirRelatorio {
+
     private static final String CAMINHO_ANIMAL = "animal.json";
     private static final String CAMINHO_TUTOR = "tutor.json";
     private static final String CAMINHO_SETOR = "setor.json";
 
+    /**
+     * Imprime no console todos os animais cadastrados,
+     * incluindo dados básicos, idade calculada e tutores associados.
+     */
     public void ImprimirAnimal() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<Animal> listaAnimais = carregarLista(CAMINHO_ANIMAL, new TypeToken<List<Animal>>() {}.getType());
 
-        if (listaAnimais == null || listaAnimais.isEmpty()) {
+        if (listaAnimais.isEmpty()) {
             System.out.println("Não há registro de animais no sistema.");
             return;
         }
@@ -38,6 +48,7 @@ public class ImprimirRelatorio {
             LocalDate data = LocalDate.parse(a.getDataNascimento());
             Period idade = Period.between(data, LocalDate.now());
             System.out.println("Idade: " + idade.getYears() + " ano(s) e " + idade.getMonths() + " mês(es)");
+
             System.out.println("Situação: " + a.getSituacaoAtual());
             System.out.println("Setor: " + a.getNomeSetor());
 
@@ -53,11 +64,14 @@ public class ImprimirRelatorio {
         }
     }
 
+    /**
+     * Imprime no console todos os setores cadastrados,
+     * mostrando informações do setor, tutores e animais associados.
+     */
     public void ImprimirSetor() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<SetorResponsavel> listaSetores = carregarLista(CAMINHO_SETOR, new TypeToken<List<SetorResponsavel>>() {}.getType());
 
-        if (listaSetores == null || listaSetores.isEmpty()) {
+        if (listaSetores.isEmpty()) {
             System.out.println("Não há registro de setores no sistema.");
             return;
         }
@@ -88,11 +102,14 @@ public class ImprimirRelatorio {
         }
     }
 
+    /**
+     * Imprime no console todos os tutores cadastrados,
+     * incluindo informações pessoais e animais associados.
+     */
     public void ImprimirTutor() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<PessoaTutora> listaTutores = carregarLista(CAMINHO_TUTOR, new TypeToken<List<PessoaTutora>>() {}.getType());
 
-        if (listaTutores == null || listaTutores.isEmpty()) {
+        if (listaTutores.isEmpty()) {
             System.out.println("Não há registro de tutores no sistema.");
             return;
         }
@@ -116,6 +133,14 @@ public class ImprimirRelatorio {
         }
     }
 
+    /**
+     * Carrega uma lista de objetos a partir de um arquivo JSON.
+     *
+     * @param <T> Tipo dos objetos a serem carregados.
+     * @param caminho Caminho do arquivo JSON.
+     * @param tipoLista Tipo da lista de objetos (usado pelo Gson).
+     * @return Lista de objetos carregados, ou lista vazia em caso de erro ou arquivo vazio.
+     */
     private <T> List<T> carregarLista(String caminho, Type tipoLista) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileReader reader = new FileReader(caminho)) {
@@ -127,3 +152,4 @@ public class ImprimirRelatorio {
         }
     }
 }
+
