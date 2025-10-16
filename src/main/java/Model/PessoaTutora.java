@@ -8,9 +8,9 @@ public class PessoaTutora {
     private String endereco;
     private String telefone;
     private String email;
-    private List<Animal> animals;
+    private List<String> animals;
 
-    public PessoaTutora(String id, String nome, String endereco, String telefone, String email, List<Animal> animals) {
+    public PessoaTutora(String id, String nome, String endereco, String telefone, String email, List<String> animals) {
         this.iD = id;
         this.nome = nome;
         this.endereco = endereco;
@@ -59,11 +59,11 @@ public class PessoaTutora {
         this.nome = nome;
     }
 
-    public List<Animal> getAnimals() {
+    public List<String> getAnimals() {
         return animals;
     }
 
-    public void setAnimals(List<Animal> animals) {
+    public void setAnimals(List<String> animals) {
         this.animals = animals;
     }
 }

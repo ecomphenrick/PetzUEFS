@@ -163,11 +163,11 @@ public class CadastroAnimal {
 
             for (PessoaTutora tutor : setor.getPessoaTutoras()) {
                 if (tutor.getAnimals() == null) tutor.setAnimals(new ArrayList<>());
-                tutor.getAnimals().add(animal);
+                tutor.getAnimals().add(animal.getNome());
                 for (PessoaTutora tGlobal : listaTutores) {
                     if (tGlobal.getiD().equals(tutor.getiD())) {
                         if (tGlobal.getAnimals() == null) tGlobal.setAnimals(new ArrayList<>());
-                        tGlobal.getAnimals().add(animal);
+                        tGlobal.getAnimals().add(animal.getNome());
                     }
                 }
             }
@@ -193,6 +193,7 @@ public class CadastroAnimal {
         }
     }
 }
+
 
 
 

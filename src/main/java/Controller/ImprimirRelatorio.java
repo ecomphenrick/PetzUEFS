@@ -15,29 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImprimirRelatorio {
-    private static final String CaminhoAnimal = "animal.json";
-    private static final String CaminhoTutor = "tutor.json";
-    private static final String CaminhoSetor = "setor.json";
+    private static final String CAMINHO_ANIMAL = "animal.json";
+    private static final String CAMINHO_TUTOR = "tutor.json";
+    private static final String CAMINHO_SETOR = "setor.json";
 
     public void ImprimirAnimal() {
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<Animal> listaAnimais = carregarLista(CAMINHO_ANIMAL, new TypeToken<List<Animal>>() {}.getType());
 
-        List<Animal> listaAnimais = new ArrayList<>();
-
-        try (FileReader reader = new FileReader(CaminhoAnimal)) {
-            Type tipoLista = new TypeToken<List<Animal>>() {}.getType();
-            listaAnimais = gson.fromJson(reader, tipoLista);
-            if (listaAnimais == null) {
-                listaAnimais = new ArrayList<>();
-            }
-        } catch (Exception e) {
-            System.out.println("❌ Erro ao ler o arquivo: " + e.getMessage());
-            return;
-        }
-
-        if (listaAnimais.isEmpty()) {
+        if (listaAnimais == null || listaAnimais.isEmpty()) {
             System.out.println("Não há registro de animais no sistema.");
             return;
         }
@@ -50,10 +36,8 @@ public class ImprimirRelatorio {
             System.out.println("Sexo: " + a.getSexo());
 
             LocalDate data = LocalDate.parse(a.getDataNascimento());
-            LocalDate hoje = LocalDate.now();
-            Period idade = Period.between(data, hoje);
-            System.out.println("Idade: " + idade.getYears() + " ano(s) e " + idade.getMonths() + " meses");
-
+            Period idade = Period.between(data, LocalDate.now());
+            System.out.println("Idade: " + idade.getYears() + " ano(s) e " + idade.getMonths() + " mês(es)");
             System.out.println("Situação: " + a.getSituacaoAtual());
             System.out.println("Setor: " + a.getNomeSetor());
 
@@ -65,94 +49,81 @@ public class ImprimirRelatorio {
                     System.out.println("    - " + nomeTutor);
                 }
             }
-
-            System.out.println("\n");
+            System.out.println();
         }
     }
 
-    public void ImprimirSetor (){
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
+    public void ImprimirSetor() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<SetorResponsavel> listaSetores = carregarLista(CAMINHO_SETOR, new TypeToken<List<SetorResponsavel>>() {}.getType());
 
-        List<SetorResponsavel> listaSetores = new ArrayList<>();
-
-        try (FileReader reader = new FileReader(CaminhoSetor)) {
-            Type tipoLista = new TypeToken<List<SetorResponsavel>>() {}.getType();
-            listaSetores = gson.fromJson(reader, tipoLista);
-            if (listaSetores == null) {
-                listaSetores = new ArrayList<>();
-            }
-        } catch (Exception e) {
-            System.out.println("❌ Erro ao ler o arquivo: " + e.getMessage());
+        if (listaSetores == null || listaSetores.isEmpty()) {
+            System.out.println("Não há registro de setores no sistema.");
             return;
         }
-        if (listaSetores.isEmpty() || listaSetores == null){
-            System.out.println("Não há registro de setores no sistema. ");
-        }else {
-            for (SetorResponsavel s : listaSetores) {
-                System.out.println("Nome: " + s.getNome());
-                System.out.println("ID: " + s.getiD());
-                System.out.println("Endereço: " + s.getEndereco());
-                if (s.getPessoaTutoras() == null || s.getPessoaTutoras().isEmpty()) {
-                    System.out.println("  Nenhum tutor cadastrado nesse setor.");
-                } else {
-                    System.out.println("  Tutores:");
-                    for (PessoaTutora p : s.getPessoaTutoras()) {
-                        System.out.println("    - " + p.getNome() + " (ID: " + p.getiD() + ")");
-                    }
-                }
-                if (s.getAnimais() == null || s.getAnimais().isEmpty()) {
-                    System.out.println("Nenhum animal cadastrado no setor.");
-                } else {
-                    System.out.println(" Animais:");
-                    for (Animal a : s.getAnimais()) {
-                        System.out.println("    - " + a.getNome() + " (" + a.getEspecie() + ")");
-                    }
+
+        for (SetorResponsavel s : listaSetores) {
+            System.out.println("Nome: " + s.getNome());
+            System.out.println("ID: " + s.getiD());
+            System.out.println("Endereço: " + s.getEndereco());
+
+            if (s.getPessoaTutoras() == null || s.getPessoaTutoras().isEmpty()) {
+                System.out.println("  Nenhum tutor cadastrado nesse setor.");
+            } else {
+                System.out.println("  Tutores:");
+                for (PessoaTutora p : s.getPessoaTutoras()) {
+                    System.out.println("    - " + p.getNome() + " (ID: " + p.getiD() + ")");
                 }
             }
+
+            if (s.getAnimais() == null || s.getAnimais().isEmpty()) {
+                System.out.println("  Nenhum animal cadastrado nesse setor.");
+            } else {
+                System.out.println("  Animais:");
+                for (Animal a : s.getAnimais()) {
+                    System.out.println("    - " + a.getNome() + " (" + a.getEspecie() + ")");
+                }
+            }
+            System.out.println();
         }
     }
+
     public void ImprimirTutor() {
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<PessoaTutora> listaTutores = carregarLista(CAMINHO_TUTOR, new TypeToken<List<PessoaTutora>>() {}.getType());
 
-        List<PessoaTutora> listaTutores = new ArrayList<>();
-
-        try (FileReader reader = new FileReader(CaminhoTutor)) {
-            Type tipoLista = new TypeToken<List<PessoaTutora>>() {}.getType();
-            listaTutores = gson.fromJson(reader, tipoLista);
-            if (listaTutores == null) {
-                listaTutores = new ArrayList<>();
-            }
-        } catch (Exception e) {
-            System.out.println("❌ Erro ao ler o arquivo: " + e.getMessage());
+        if (listaTutores == null || listaTutores.isEmpty()) {
+            System.out.println("Não há registro de tutores no sistema.");
             return;
         }
 
-        if (listaTutores.isEmpty() || listaTutores == null) {
-            System.out.println("Não há registro de tutores no sistema.");
-        } else {
-            for (PessoaTutora t : listaTutores) {
-                System.out.println("Nome: " + t.getNome());
-                System.out.println("ID: " + t.getiD());
-                System.out.println("Endereço: " + t.getEndereco());
-                System.out.println("E-mail: " + t.getEmail());
-                System.out.println("Telefone: " + t.getTelefone());
-                System.out.println("Setor: " + t.get);
+        for (PessoaTutora t : listaTutores) {
+            System.out.println("Nome: " + t.getNome());
+            System.out.println("ID: " + t.getiD());
+            System.out.println("Endereço: " + t.getEndereco());
+            System.out.println("E-mail: " + t.getEmail());
+            System.out.println("Telefone: " + t.getTelefone());
 
-                if (t.getAnimals() == null || t.getAnimals().isEmpty()) {
-                    System.out.println("  Nenhum animal associado a este tutor.");
-                } else {
-                    System.out.println("  Animais:");
-                    for (Animal a : t.getAnimals()) {
-                        System.out.println("    - " + a.getNome() + " (" + a.getEspecie() + "), Setor: " + a.getNomeSetor());
-                    }
+            if (t.getAnimals() == null || t.getAnimals().isEmpty()) {
+                System.out.println("  Nenhum animal associado a este tutor.");
+            } else {
+                System.out.println("  Animais:");
+                for (String nomeAnimal : t.getAnimals()) {
+                    System.out.println("    - " + nomeAnimal);
                 }
-                System.out.println("\n");
             }
+            System.out.println();
         }
     }
 
+    private <T> List<T> carregarLista(String caminho, Type tipoLista) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileReader reader = new FileReader(caminho)) {
+            List<T> lista = gson.fromJson(reader, tipoLista);
+            return (lista != null) ? lista : new ArrayList<>();
+        } catch (Exception e) {
+            System.out.println("❌ Erro ao ler o arquivo (" + caminho + "): " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
 }

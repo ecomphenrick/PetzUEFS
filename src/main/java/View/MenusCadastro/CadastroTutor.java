@@ -116,7 +116,7 @@ public class CadastroTutor {
             System.out.println("E-mail inválido! Digite novamente.");
         }
 
-        List<Animal> animals = new ArrayList<>();
+        List<String> animals = new ArrayList<>();
 
         PessoaTutora pessoaTutora = new PessoaTutora(iD, nome, endereco, telefone, email, animals);
         listaSetores.get(indiceEscolhido).getPessoaTutoras().add(pessoaTutora);

@@ -1,15 +1,1 @@
-[
-  {
-    "iD": "A234",
-    "nome": "Pitoco",
-    "especie": "Cachorro",
-    "raca": "SRD",
-    "dataNascimento": "2020-01-01",
-    "sexo": "M",
-    "situacaoAtual": "Em observação",
-    "nomeSetor": "biblioteca",
-    "tutores": [
-      "Henrick"
-    ]
-  }
-]
+[]
