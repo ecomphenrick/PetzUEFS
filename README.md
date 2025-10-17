@@ -1,4 +1,4 @@
-# 🐾 Gestão de Animais Abandonados no Campus
+# 🐾 PetzUEFS
 
 ## Sobre o Projeto
 Este projeto é um **sistema de apoio à gestão de animais abandonados** no campus.  
