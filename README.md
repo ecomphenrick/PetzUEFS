@@ -1,58 +1,29 @@
+🐾 PetzUEFS
+Sobre o Projeto
 
-🐾 PetzUEFS - Sistema de Apoio à Proteção de Animais da UEFS
-📄 Sobre o Projeto
-O PetzUEFS é uma aplicação desenvolvida em Java para a disciplina EXA 863 - MI - Programação da Universidade Estadual de Feira de Santana (UEFS).
+Este projeto é um sistema de apoio à gestão de animais abandonados no campus.
+Ele permite controlar animais, tutores e setores, facilitando o cuidado e a organização desses animais.
 
+O projeto foi desenvolvido em Java, usando arquivos JSON para armazenar os dados, e é uma prática da disciplina MI - Programação.
 
+Funcionalidades
 
-O objetivo é criar uma solução digital para substituir o controle manual dos animais que circulam no campus (como gatos e cachorros). O sistema visa apoiar o monitoramento, os cuidados veterinários, a alimentação e a adoção desses animais.
+O sistema permite:
 
+🐶 Gerenciar Animais: cadastrar, atualizar, remover e consultar animais com informações como nome, espécie, raça, data de nascimento, sexo, situação atual e setor.
 
+👤 Gerenciar Tutores: cadastrar, atualizar e remover tutores, associando-os aos animais.
 
+🏢 Gerenciar Setores: controlar setores do campus onde os animais estão localizados.
 
+💾 Persistência de dados: salvar todas as informações em arquivos JSON (animais.json, tutores.json, setores.json).
 
-✨ Funcionalidades Principais
-O sistema permite o gerenciamento completo (CRUD - Create, Read, Update, Delete)  das seguintes entidades:
+Tecnologias Usadas
 
-1.
-Animais 
+Java – linguagem principal do projeto
 
-Dados: ID Único (Obrigatório) , Nome, Espécie (gato, cachorro, outro), Raça, Idade aproximada (não negativa) , Sexo, Situação atual (em observação/disponível para adoção/em tratamento).
+Gson – biblioteca para manipulação de arquivos JSON
 
+JSON – formato de armazenamento de dados
 
-
-
-2.
-Setor Responsável 
-
-Dados: ID Único (Obrigatório), Nome, Endereço.
-
-
-3.
-Pessoa Tutora 
-
-Dados: ID Único (Obrigatório) , Nome, Endereço, Telefone (com validação) , E-mail (com validação).
-
-
-Relatórios de Gestão 
-
-Relação completa de Animais.
-
-Relação de Animais agrupada por Setor Responsável.
-
-Relação de Animais agrupada por Pessoa Tutora.
-
-🏗️ Requisitos de Desenvolvimento
-O projeto seguiu rigorosamente os seguintes padrões:
-
-
-Linguagem: Java 
-
-
-Arquitetura: Padrão Model-View-Controller (MVC).
-
-
-Persistência: Json
-
-
-Documentação: Uso do padrão Javadoc para documentação de classes, atributos e métodos.
+IDE sugerida: IntelliJ IDEA ou Eclipse
