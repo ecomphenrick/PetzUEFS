@@ -1,4 +1,3 @@
-Aqui está uma versão mais simples e direta do README.md para o seu projeto PetzUEFS, focado nos pontos essenciais do trabalho universitário.
 
 🐾 PetzUEFS - Sistema de Apoio à Proteção de Animais da UEFS
 📄 Sobre o Projeto
