@@ -32,23 +32,10 @@ public class BuscaTutor {
     public List<PessoaTutora> buscaTutor(String nome) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
-                .registerTypeAdapter(LocalDate.class, new JsonSerializer<LocalDate>() {
-                    @Override
-                    public JsonElement serialize(LocalDate src, Type typeOfSrc, JsonSerializationContext context) {
-                        return new JsonPrimitive(src.toString()); // "yyyy-MM-dd"
-                    }
-                })
-                .registerTypeAdapter(LocalDate.class, new JsonDeserializer<LocalDate>() {
-                    @Override
-                    public LocalDate deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) {
-                        return LocalDate.parse(json.getAsString());
-                    }
-                })
                 .create();
 
         List<PessoaTutora> listaTutores = new ArrayList<>();
 
-        // Ler o arquivo JSON com try-with-resources
         try (FileReader reader = new FileReader(CAMINHO_ARQUIVO)) {
             Type tipoLista = new TypeToken<List<PessoaTutora>>() {}.getType();
             listaTutores = gson.fromJson(reader, tipoLista);
@@ -60,7 +47,6 @@ public class BuscaTutor {
             return new ArrayList<>();
         }
 
-        // Filtrar todos os tutores que correspondem ao nome (ignora maiúsculas/minúsculas)
         List<PessoaTutora> encontrados = new ArrayList<>();
         for (PessoaTutora tutor : listaTutores) {
             if (tutor.getNome().equalsIgnoreCase(nome)) {
@@ -68,7 +54,7 @@ public class BuscaTutor {
             }
         }
 
-        return encontrados; // pode retornar lista vazia se nenhum encontrado
+        return encontrados;
     }
 }
 

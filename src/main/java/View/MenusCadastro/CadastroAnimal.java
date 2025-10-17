@@ -135,9 +135,18 @@ public class CadastroAnimal {
                 if (mes < 1 || mes > 12) System.out.println("Mês inválido! Digite um número entre 1 e 12.\n");
             } while (mes < 1 || mes > 12);
 
-            System.out.println("Ano: ");
-            int ano = sc.nextInt();
-            sc.nextLine();
+            int anoAtual = LocalDate.now().getYear();
+            int ano;
+
+            do {
+                System.out.println("Ano: ");
+                ano = sc.nextInt();
+                sc.nextLine();
+
+                if (ano > anoAtual) {
+                    System.out.println("Ano inválido! O ano não pode ser maior que " + anoAtual + ".");
+                }
+            } while (ano > anoAtual);
 
             System.out.println("Digite o sexo (F ou M): ");
             String sexo = sc.nextLine();

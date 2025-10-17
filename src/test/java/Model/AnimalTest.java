@@ -3,7 +3,7 @@ package Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,26 +14,27 @@ class AnimalTest {
     @BeforeEach
     void setUp() {
         animal = new Animal(
-                "A001",                           // iD
-                "Rex",                            // nome
-                "Cão",                             // especie
-                "Labrador",                        // raca
-                LocalDate.of(2020, 10, 14),       // dataNascimento
-                "M",                               // sexo
-                "Disponível"                       // situacaoAtual
+                "A001",              // iD
+                "Rex",               // nome
+                "Cão",               // espécie
+                "Labrador",          // raça
+                "2020-10-14",        // dataNascimento (String)
+                "M",                 // sexo
+                "Disponível para adoção",        // situação atual
+                "Reitoria",             // nomeSetor
+                List.of("Henrick")   // tutores
         );
     }
 
-
     @Test
     void getDataNascimento() {
-        assertEquals(LocalDate.of(2020, 10, 14), animal.getDataNascimento());
+        assertEquals("2020-10-14", animal.getDataNascimento());
     }
 
     @Test
     void setDataNascimento() {
-        animal.setDataNascimento(LocalDate.of(2021, 11, 12));
-        assertEquals(LocalDate.of(2021, 11, 12), animal.getDataNascimento());
+        animal.setDataNascimento("2021-11-12");
+        assertEquals("2021-11-12", animal.getDataNascimento());
     }
 
     @Test
@@ -93,12 +94,35 @@ class AnimalTest {
 
     @Test
     void getSituacaoAtual() {
-        assertEquals("Disponível", animal.getSituacaoAtual());
+        assertEquals("Disponível para adoção", animal.getSituacaoAtual());
     }
 
     @Test
     void setSituacaoAtual() {
-        animal.setSituacaoAtual("Adotado");
-        assertEquals("Adotado", animal.getSituacaoAtual());
+        animal.setSituacaoAtual("Em observação");
+        assertEquals("Em observação", animal.getSituacaoAtual());
+    }
+
+    @Test
+    void getNomeSetor() {
+        assertEquals("Reitoria", animal.getNomeSetor());
+    }
+
+    @Test
+    void setNomeSetor() {
+        animal.setNomeSetor("Biblioteca");
+        assertEquals("Biblioteca", animal.getNomeSetor());
+    }
+
+    @Test
+    void getTutores() {
+        assertEquals(List.of("Henrick"), animal.getTutores());
+    }
+
+    @Test
+    void setTutores() {
+        animal.setTutores(List.of("Maria", "João"));
+        assertEquals(List.of("Maria", "João"), animal.getTutores());
     }
 }
+

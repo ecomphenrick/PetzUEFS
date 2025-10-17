@@ -17,14 +17,11 @@
     </properties>
 
     <dependencies>
-        <!-- ✅ Gson para manipulação de JSON -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
-
-        <!-- ✅ JUnit 5 para testes -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -35,7 +32,6 @@
 
     <build>
         <plugins>
-            <!-- 🔧 Plugin do compilador -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -47,7 +43,6 @@
                 </configuration>
             </plugin>
 
-            <!-- ⚙️ Plugin para executar testes -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>

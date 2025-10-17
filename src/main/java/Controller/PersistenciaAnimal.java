@@ -38,7 +38,6 @@ public class PersistenciaAnimal {
         File arquivo = new File(CAMINHO_ARQUIVO);
         List<Animal> listaAnimais = new ArrayList<>();
 
-        // Ler arquivo existente, se houver
         if (arquivo.exists()) {
             try (FileReader reader = new FileReader(arquivo)) {
                 Type tipoLista = new TypeToken<List<Animal>>() {}.getType();
@@ -51,10 +50,8 @@ public class PersistenciaAnimal {
             }
         }
 
-        // Adicionar o novo animal à lista
         listaAnimais.add(novoAnimal);
 
-        // Salvar a lista atualizada no arquivo
         try (FileWriter writer = new FileWriter(arquivo)) {
             gson.toJson(listaAnimais, writer);
             System.out.println("✅ Animal salvo com sucesso!");

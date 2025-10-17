@@ -38,7 +38,6 @@ public class PersistenciaTutor {
         File arquivo = new File(CAMINHO_ARQUIVO);
         List<PessoaTutora> listaTutores = new ArrayList<>();
 
-        // Ler arquivo existente, se houver
         if (arquivo.exists()) {
             try (FileReader reader = new FileReader(arquivo)) {
                 Type tipoLista = new TypeToken<List<PessoaTutora>>() {}.getType();
@@ -51,10 +50,8 @@ public class PersistenciaTutor {
             }
         }
 
-        // Adicionar o novo tutor à lista
         listaTutores.add(novoTutor);
 
-        // Salvar a lista atualizada no arquivo
         try (FileWriter writer = new FileWriter(arquivo)) {
             gson.toJson(listaTutores, writer);
             System.out.println("✅ Tutor salvo com sucesso!");

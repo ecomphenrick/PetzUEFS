@@ -74,9 +74,19 @@ public class AtualizarAnimal {
                     mes = sc.nextInt();
                     sc.nextLine();
                 } while (mes < 1 || mes > 12);
-                System.out.print("Ano: ");
-                int ano = sc.nextInt();
-                sc.nextLine();
+
+                int anoAtual = LocalDate.now().getYear();
+                int ano;
+
+                do {
+                    System.out.println("Ano: ");
+                    ano = sc.nextInt();
+                    sc.nextLine();
+
+                    if (ano > anoAtual) {
+                        System.out.println("Ano inválido! O ano não pode ser maior que " + anoAtual + ".");
+                    }
+                } while (ano > anoAtual);
                 LocalDate dataNascimento = LocalDate.of(ano, mes, 1);
                 animalEncontrado.setDataNascimento(dataNascimento.toString());
                 break;

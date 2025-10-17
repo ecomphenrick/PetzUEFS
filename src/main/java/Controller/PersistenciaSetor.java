@@ -38,7 +38,6 @@ public class PersistenciaSetor {
         File arquivo = new File(CAMINHO_ARQUIVO);
         List<SetorResponsavel> listaSetores = new ArrayList<>();
 
-        // Ler arquivo existente, se houver
         if (arquivo.exists()) {
             try (FileReader reader = new FileReader(arquivo)) {
                 Type tipoLista = new TypeToken<List<SetorResponsavel>>() {}.getType();
@@ -51,10 +50,10 @@ public class PersistenciaSetor {
             }
         }
 
-        // Adicionar o novo setor à lista
+
         listaSetores.add(novoSetor);
 
-        // Salvar a lista atualizada no arquivo
+
         try (FileWriter writer = new FileWriter(arquivo)) {
             gson.toJson(listaSetores, writer);
             System.out.println("✅ Setor salvo com sucesso!");

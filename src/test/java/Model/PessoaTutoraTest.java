@@ -3,6 +3,8 @@ package Model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PessoaTutoraTest {
@@ -11,7 +13,14 @@ class PessoaTutoraTest {
 
     @BeforeEach
     void setUp() {
-        pessoa = new PessoaTutora("P001", "Maria Silva", "Rua A, 123", "75992658825", "maria@gmail.com");
+        pessoa = new PessoaTutora(
+                "P001",
+                "Maria Silva",
+                "Rua A, 123",
+                "75992658825",
+                "maria@gmail.com",
+                List.of("Pitoco") // lista de animais (Strings)
+        );
     }
 
     @Test
@@ -67,5 +76,16 @@ class PessoaTutoraTest {
     void setNome() {
         pessoa.setNome("João Pereira");
         assertEquals("João Pereira", pessoa.getNome());
+    }
+
+    @Test
+    void getAnimais() {
+        assertEquals(List.of("Pitoco"), pessoa.getAnimals());
+    }
+
+    @Test
+    void setAnimais() {
+        pessoa.setAnimals(List.of("Rex", "Bidu"));
+        assertEquals(List.of("Rex", "Bidu"), pessoa.getAnimals());
     }
 }
